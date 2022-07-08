@@ -5,6 +5,7 @@ import PopupPostCode from "./PopupPostCode";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
+import { API_URL } from '../config/apiurl'
 const EditCustomer = (props) => {
     const { no } = useParams()
     const [ formData, setFormData ] = useState({
@@ -16,7 +17,7 @@ const EditCustomer = (props) => {
         c_adddetail: ""
     })
     async function getCustomer(){
-        const response = await axios.get(`http://localhost:3001/customers/${no}`)
+        const response = await axios.get(`${ API_URL}/customers/${no}`)
         return response.data;
     }
     const state = useAsync(getCustomer);
@@ -85,7 +86,7 @@ const EditCustomer = (props) => {
 
     }
     function updateCustomer(){
-        axios.put(`http://localhost:3001/editcustomer/${no}`,formData)
+        axios.put(` ${API_URL}/editcustomer/${no}`,formData)
         .then(res=>{
             console.log(res);
             navigate('/')

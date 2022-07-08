@@ -3,8 +3,9 @@ import { Table, TableBody, TableHead, TableCell, TableRow} from '@mui/material';
 import Customer from './Customer';
 import  useAsync  from "../hooks/useAsync";
 import axios from 'axios';
+import { API_URL } from '../config/apiurl'
 async function getCustomers(){
-    const response = await axios.get('http://localhost:3001/customers')
+    const response = await axios.get(`${API_URL}/customers`)
     return response.data;
 }
 

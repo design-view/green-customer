@@ -4,6 +4,7 @@ import PopupDom  from "./PopupDom";
 import PopupPostCode from "./PopupPostCode";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config/apiurl'
 const CreateCustomer = (props) => {
     const navigate = useNavigate();
     //우편번호 관리하기
@@ -64,7 +65,7 @@ const CreateCustomer = (props) => {
 
     }
     function insertCustomer(){
-        axios.post("http://localhost:3001/addCustomer",formData)
+        axios.post(`${API_URL}/addCustomer`,formData)
         .then(res=>{
             console.log(res);
             navigate('/')

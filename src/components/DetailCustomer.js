@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import axios from "axios";
+import { API_URL } from '../config/apiurl'
 const DetailCustomer = (props) => {
     const param = useParams();
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const DetailCustomer = (props) => {
     console.log(no);
     async function getCustomer() {
         const response = await axios.get(
-            `http://localhost:3001/customers/${no}`
+            `${API_URL}/customers/${no}`
         )
         return response.data;
     }
